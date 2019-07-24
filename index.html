@@ -82,16 +82,26 @@
   }
   // called when a message arrives
   led_state=true
-  function doAction(msg) {
-	n=msg.split(":")[0];
-	if(n=='on'){
-		document.getElementById("led_state").innerHTML='on';
-		
-	}else if(n=='sensor'){
-		document.getElementById("sensor_val").innerHTML=sensor_val;
-	}
-	else if(n=='off'){
-		document.getElementById("led_state").innerHTML='off';
+function doAction(msg) {
+    n=msg.split(":")[0];
+	f=msg.split(":")[1];
+	v=msg.split(":")[2]
+	boarId=document.getElementById("boarId").value;
+	userId=document.getElementById("userId").value;
+	if(boarId+userId==n){
+		switch(f) {
+		  case 'led_state':
+			led_state=v;
+			document.getElementById("led_state").innerHTML=led_state;
+			break;
+		  case 'sensor_val':
+			sensor_val=v;
+			document.getElementById("sensor_val").innerHTML=sensor_val;
+			// code block
+			break;
+		  default:
+			// code block
+		}
 	}
 }
   
