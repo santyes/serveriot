@@ -26,10 +26,8 @@
 
   // Create a client instance
   //client = new Paho.MQTT.Client("postman.cloudmqtt.com", 14970);
-  
   client = new Paho.MQTT.Client("postman.cloudmqtt.com", 32773, "web_" + parseInt(Math.random() * 100, 10));
-
-  // set callback handlers
+  // Conexion cliente--------------------------------
   client.onConnectionLost = onConnectionLost;
   client.onMessageArrived = onMessageArrived;
   var options = {
@@ -39,7 +37,6 @@
     onSuccess:onConnect,
     onFailure:doFail
   }
-
   // connect the client
   client.connect(options);
    
@@ -47,17 +44,13 @@
   function onConnect() {
     // Once a connection has been made, make a subscription and send a message.
     console.log("onConnect");
-	
-    client.subscribe("/cloudmqtt");
+	client.subscribe("/cloudmqtt");
     message = new Paho.MQTT.Message("ll:Hello: CloudMQTT");
     message.destinationName = "/cloudmqtt";
-    
-	
   }
 
   function doFail(e){
     console.log(e);
-	
   }
 
   // called when the client loses its connection
@@ -85,36 +78,20 @@
 
     // called when a message arrives
   function led() {
-    //boarId=document.getElementById("boarId").value;
-	//userIdId=document.getElementById("userId").value;
-	
     sendMessage('led')
   }
   // called when a message arrives
-  myName='leo'
   led_state=true
   function doAction(msg) {
-    n=msg.split(":")[0];
-	f=msg.split(":")[1];
-	v=msg.split(":")[2]
-	boarId=document.getElementById("boarId").value;
-	userId=document.getElementById("userId").value;
-	if(boarId+userId==n){
-		switch(f) {
-		  case 'led_state':
-			led_state=v;
-			document.getElementById("led_state").innerHTML=led_state;
-			break;
-		  case 'sensor_val':
-			sensor_val=v;
-			document.getElementById("sensor_val").innerHTML=sensor_val;
-			// code block
-			break;
-		  default:
-			// code block
-		}
-	   }
-	 }
+	if(msg.payloadString=='on'){
+		document.getElementById("led_state").innerHTML='on';
+	}else if(msg.payloadString=='sensor'){
+		document.getElementById("sensor_val").innerHTML=sensor_val;
+	}
+	else if(msg.payloadString=='off'){
+		document.getElementById("led_state").innerHTML='off';
+	}
+}
   
 </script>
 	</body>
