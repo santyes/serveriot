@@ -83,12 +83,14 @@
   // called when a message arrives
   led_state=true
   function doAction(msg) {
-	if(msg.payloadString=='on'){
+	n=msg.split(":")[0];
+	if(n=='on'){
 		document.getElementById("led_state").innerHTML='on';
-	}else if(msg.payloadString=='sensor'){
+		
+	}else if(n=='sensor'){
 		document.getElementById("sensor_val").innerHTML=sensor_val;
 	}
-	else if(msg.payloadString=='off'){
+	else if(n=='off'){
 		document.getElementById("led_state").innerHTML='off';
 	}
 }
