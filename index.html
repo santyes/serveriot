@@ -46,7 +46,7 @@
     console.log("onConnect");
 	client.subscribe("/cloudmqtt");
     message = new Paho.MQTT.Message("ll:Hello: CloudMQTT");
-    message.destinationName = "/cloudmqtt";
+    message.destinationName = "/cloudmqttweb";
   }
 
   function doFail(e){
@@ -64,6 +64,7 @@
   function onMessageArrived(message) {
     console.log("onMessageArrived:"+message.payloadString);
 	sen=document.getElementById('sensor_val');
+	
 	sen.innerHTML=message.payloadString;
 	doAction(message.payloadString);
   }
@@ -71,7 +72,7 @@
     // called when a message arrives
   function sendMessage(msg) {
     message = new Paho.MQTT.Message(msg);
-    message.destinationName = "/cloudmqtt";
+    message.destinationName = "/cloudmqttweb";
     client.send(message);
 	
   }
