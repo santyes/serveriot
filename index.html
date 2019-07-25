@@ -64,7 +64,6 @@
   function onMessageArrived(message) {
     console.log("onMessageArrived:"+message.payloadString);
 	sen=document.getElementById('sensor_val');
-	sen.innerHTML=message.payloadString;
 	
 	vled=document.getElementById('led_state');
 	n=message.payloadString.split(':')[0];
