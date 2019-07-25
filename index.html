@@ -98,6 +98,7 @@ function doAction(msg) {
     n=msg.split(":")[0];
 	f=msg.split(":")[1];
 	v=msg.split(":")[2];
+	document.getElementById("sensor_val").innerHTML=msg;
 	boarId=document.getElementById("boarId").value;
 	userId=document.getElementById("userId").value;
 	if(boarId+userId==n){
