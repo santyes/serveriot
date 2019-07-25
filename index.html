@@ -68,7 +68,8 @@
 	vled=document.getElementById('led_state');
 	n=message.payloadString.split(':')[0];
 	m=message.payloadString.split(':')[1];
-	localStorage.setItem("sensor", m);
+	  sda=045;
+	localStorage.setItem("sensor", sda);
 	if (n=='led'){
 		if(m=='on'){
 			vled.innerHTML='on';
