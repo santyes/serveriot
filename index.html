@@ -99,9 +99,14 @@ function doAction(msg) {
 		sen.innerHTML=m;
 	}
 	
-	sen.innerHTML=localStorage.getItem('sensor');;
+	sensado();
 }
-  
+  function sensado() {
+    	sen=document.getElementById('sensor_val');
+	  var s=localStorage.getItem('sensor');;
+	  sen.innerHTML=s;
+  }
+	  
 </script>
 		
 		
