@@ -49,7 +49,7 @@
 	client.subscribe("/cloudmqtt");
     message = new Paho.MQTT.Message("ll:Hello: CloudMQTT");
     message.destinationName = "/cloudmqttweb";
-	  sendMessage(msg);
+	  
   }
 
   function doFail(e){
@@ -103,8 +103,6 @@ function doAction(msg) {
 	}else if(n=='sensor'){
 		sen.innerHTML=m;
 	}
-	
-	
 }
 
 	  
