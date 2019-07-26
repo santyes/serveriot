@@ -5,7 +5,7 @@
 	    <!-- Latest compiled and minified CSS - add here as needed -->
 	</head>
 	
-	<body onload="sensado()">
+	<body onload="led()">
 		
 	    <!-- HTML to display MQTT topic values ------------------------------------------------->
 		<div><strong>IOT Server</strong></div><br>
@@ -67,11 +67,6 @@
     console.log("onMessageArrived:"+message.payloadString);
 	
 	doAction(message.payloadString);
-  }
-function sensado() {
-    sen=document.getElementById('sensor_val');
-    var s = localStorage.getItem('sensor');
-    sen.innerHTML=s;
   }
 
     // called when a message arrives
