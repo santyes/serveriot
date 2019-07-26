@@ -68,6 +68,7 @@
 	vled=document.getElementById('led_state');
 	var n=message.payloadString.split(':')[0];
 	var m=message.payloadString.split(':')[1];
+	sessionStorage.setItem(producto,precio); //ó sessionStorage[producto]=precio
 	if (n=='led'){
 		if(m=='on'){
 			vled.innerHTML='on';
@@ -81,7 +82,8 @@
   }
 function sensado() {
     sen=document.getElementById('sensor_val');
-    sen.innerHTML=m;
+    sessionStorage.setItem('sensor',sen.value);
+    sen.innerHTML=sessionStorage.getItem('sensor');
   }
 
     // called when a message arrives
