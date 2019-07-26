@@ -49,6 +49,7 @@
 	client.subscribe("/cloudmqtt");
     message = new Paho.MQTT.Message("ll:Hello: CloudMQTT");
     message.destinationName = "/cloudmqttweb";
+	  client.send('led')
   }
 
   function doFail(e){
@@ -99,7 +100,7 @@ function doAction(msg) {
 		sen.innerHTML=m;
 	}
 	
-	sensado();
+	
 }
   function sensado() {
     	sen=document.getElementById('sensor_val');
