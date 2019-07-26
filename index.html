@@ -68,7 +68,6 @@
 	vled=document.getElementById('led_state');
 	var n=message.payloadString.split(':')[0];
 	var m=message.payloadString.split(':')[1];
-	sessionStorage.setItem(producto,precio); //ó sessionStorage[producto]=precio
 	if (n=='led'){
 		if(m=='on'){
 			vled.innerHTML='on';
