@@ -65,21 +65,7 @@
   // called when a message arrives
   function onMessageArrived(message) {
     console.log("onMessageArrived:"+message.payloadString);
-	sen=document.getElementById('sensor_val');
 	
-	vled=document.getElementById('led_state');
-	var n=message.payloadString.split(':')[0];
-	var m=message.payloadString.split(':')[1];
-	localStorage.setItem('sensor',m);
-	if (n=='led'){
-		if(m=='on'){
-			vled.innerHTML='on';
-		}else{
-			vled.innerHTML='off';
-		}
-	}else if(n=='sensor'){
-		sen.innerHTML=m;
-	}
 	doAction(message.payloadString);
   }
 function sensado() {
@@ -103,25 +89,19 @@ function sensado() {
   // called when a message arrives
   led_state=true
 function doAction(msg) {
-    n=msg.split(":")[0];
-	f=msg.split(":")[1];
-	v=msg.split(":")[2];
-	boarId=document.getElementById("boarId").value;
-	userId=document.getElementById("userId").value;
-	if(boarId+userId==n){
-		switch(f) {
-		  case 'led_state':
-			led_state=v;
-			document.getElementById("led_state").innerHTML=led_state;
-			break;
-		  case 'sensor_val':
-			sensor_val=v;
-			document.getElementById("sensor_val").innerHTML=sensor_val;
-			// code block
-			break;
-		  default:
-			// code block
+    	sen=document.getElementById('sensor_val');
+	vled=document.getElementById('led_state');
+	var n=msg.split(':')[0];
+	var m=msg.split(':')[1];
+	localStorage.setItem('sensor',m);
+	if (n=='led'){
+		if(m=='on'){
+			vled.innerHTML='on';
+		}else{
+			vled.innerHTML='off';
 		}
+	}else if(n=='sensor'){
+		sen.innerHTML=m;
 	}
 }
   
